@@ -19,6 +19,7 @@ class Slider {
 
         this.prevBtn?.addEventListener('click', () => this.prev())
         this.nextBtn?.addEventListener('click', () => this.next())
+        this.slideList.addEventListener('scroll', this.onScroll.bind(this));
 
 
     }
@@ -30,6 +31,19 @@ class Slider {
             block: "nearest",
         });
     };
+
+    onScroll() {
+        const scrollLeft = this.slideList.scrollLeft;
+        const slideWidth = this.slides[0].offsetWidth;
+
+        const index = Math.round(scrollLeft / slideWidth);
+
+        if (index !== this.currentIndex) {
+            this.currentIndex = index;
+            this.updateButtons();
+            this.updateProgress();
+        }
+    }
 
     updateButtons() {
         if (!this.loop) {

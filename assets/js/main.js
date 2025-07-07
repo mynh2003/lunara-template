@@ -63,6 +63,7 @@ function LoadTabs() {
 
 
 function LoadSlider() {
+
     const bestellerSection = document.querySelector('.section.bestellers');
     const bestellerSlider = new Slider(bestellerSection, {
         slidesToShow: 4,
