@@ -68,6 +68,8 @@ function LoadSlider() {
     const bestellerSlider = new Slider(bestellerSection, {
         slidesToShow: 4,
         slidesNextCount: 4,
+        slidesToShowMobile: 1,
+        slidesNextCountMobile: 1,
         loop: false
     });
 
@@ -75,6 +77,8 @@ function LoadSlider() {
     const productFeatureSlider = new Slider(productFeatureSection, {
         slidesToShow: 1,
         slidesNextCount: 1,
+        slidesToShowMobile: 1,
+        slidesNextCountMobile: 1,
         loop: false
     });
 
@@ -83,6 +87,8 @@ function LoadSlider() {
     const testimonialSlider = new Slider(testimonialSection, {
         slidesToShow: 1,
         slidesNextCount: 1,
+        slidesToShowMobile: 1,
+        slidesNextCountMobile: 1,
         loop: true
     });
 }

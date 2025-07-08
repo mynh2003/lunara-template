@@ -188,6 +188,38 @@ Layout
     cursor: pointer;
 }
 
+.slider-nav-left svg,
+.slider-nav-right svg {
+    width: 20px;
+    height: 20px;
+}
+
+.slider-pagination-wrapper{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+    left: 50%;
+    bottom: 14px;
+    transform: translate(-50%);
+    padding: 4px 0;
+}
+
+.slider-pagination{
+    height: 6px;
+    width: 6px;
+    border-radius: 8px;
+    background-color: #e4e4e4;
+    margin: 0 4px;
+    transition: all .25s ease-in;
+}
+
+.slider-pagination.active{
+    width: 24px;
+    background-color: #505050;
+}
+
+
 .slider:hover .slider-nav-left,
 .slider:hover .slider-nav-right {
     opacity: 1;
@@ -791,25 +823,37 @@ span.number,
 
 .product-featured .slider-nav-left {
     opacity: 1;
-    top: 100%;
-    left: 100%;
-    transform: translate(-200%, -100%);
+    bottom: 0;
+    left: auto;
+    right: 0;
+    top: auto;
+    transform: translateX(-50px);
 }
 
 .product-featured .slider-nav-right {
     opacity: 1;
-    top: 100%;
-    left: 100%;
-    right: auto;
-    transform: translate(-100%, -100%);
+    bottom: 0;
+    left: auto;
+    right: 0;
+    top: auto;
+    transform: none;
 }
 
 .product-featured .slider-nav-left button,
 .product-featured .slider-nav-right button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 50px;
     height: 50px;
     border-radius: 0;
     box-shadow: none;
+}
+
+.product-featured .slider-nav-left svg,
+.product-featured .slider-nav-right svg {
+    width: 20px;
+    height: 20px;
 }
 
 .product-featured .slider-nav-left button.disabled,
@@ -820,6 +864,10 @@ span.number,
 .product-featured .slider-nav-left button.disabled>svg,
 .product-featured .slider-nav-right button.disabled>svg {
     opacity: .3;
+}
+
+.product-featured .slider-pagination-wrapper {
+    display: none;
 }
 
 .product-featured .product-info {
@@ -1165,7 +1213,7 @@ span.number,
 /* Testimonials */
 .testimonials-container {
     display: block;
-    width: auto !important;
+    width: auto;
     margin: 0 15vmax;
 }
 

@@ -9,49 +9,56 @@ class Slider {
         this.prevBtn = this.container.querySelector('.slider-nav-left button')
         this.nextBtn = this.container.querySelector('.slider-nav-right button')
         this.progress = this.container.querySelector('.slider-progress')
+        this.paginations = Array.from(this.container.querySelectorAll('.slider-pagination'))
         this.currentIndex = 0
+        this.options = options;
         this.slidesToShow = options.slidesToShow || 1
         this.slidesNextCount = options.slidesNextCount || 1
-        this.loop = options.loop || false;
-
-        this.updateButtons()
-        this.updateProgress()
+        this.slidesToShowMobile = options.slidesToShowMobile || 1
+        this.slidesNextCountMobile = options.slidesNextCountMobile || 1
+        this.loop = options.loop || false
 
         this.prevBtn?.addEventListener('click', () => this.prev())
         this.nextBtn?.addEventListener('click', () => this.next())
-        this.slideList.addEventListener('scroll', this.onScroll.bind(this));
+        this.bindPaginationEvents()
+        this.slideList.addEventListener('scroll', this.onScroll.bind(this))
 
-
+        this.updateButtons()
+        this.updateProgress()
+        this.updatePaginations()
+        this.updateSlidesToShowByViewport();
+        window.addEventListener('resize', this.updateSlidesToShowByViewport.bind(this))
     }
 
-    scrollToItem(index) {
-        this.slides[index].scrollIntoView({
+    scrollToItem() {
+        this.slides[this.currentIndex].scrollIntoView({
             behavior: "smooth",
             inline: "start",
             block: "nearest",
-        });
-    };
+        })
+    }
 
     onScroll() {
-        const scrollLeft = this.slideList.scrollLeft;
-        const slideWidth = this.slides[0].offsetWidth;
+        const scrollLeft = this.slideList.scrollLeft
+        const slideWidth = this.slides[0].offsetWidth
 
-        const index = Math.round(scrollLeft / slideWidth);
+        const index = Math.round(scrollLeft / slideWidth)
 
         if (index !== this.currentIndex) {
-            this.currentIndex = index;
-            this.updateButtons();
-            this.updateProgress();
+            this.currentIndex = index
+            this.updateButtons()
+            this.updateProgress()
+            this.updatePaginations()
         }
     }
 
     updateButtons() {
         if (!this.loop) {
             if (this.prevBtn) {
-                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0);
+                this.prevBtn.classList.toggle('disabled', this.currentIndex === 0)
             }
             if (this.nextBtn) {
-                this.nextBtn.classList.toggle('disabled', this.currentIndex >= this.slides.length - this.slidesToShow);
+                this.nextBtn.classList.toggle('disabled', this.currentIndex >= this.slides.length - this.slidesToShow)
             }
         }
     }
@@ -66,29 +73,73 @@ class Slider {
         }
     }
 
+    bindPaginationEvents() {
+        if (!this.paginations || this.paginations.length === 0) return;
+        this.paginations.forEach((pagination, index) => {
+            pagination.addEventListener('click', () => {
+                this.paginations.forEach(p => p.classList.toggle('active', p === pagination))
+                this.goTo(index)
+            })
+        })
+    }
+
+    updatePaginations() {
+        if (!this.paginations || this.paginations.length === 0) return
+
+        this.paginations.forEach(p => p.classList.remove('active'))
+
+        const activePagination = this.paginations[this.currentIndex]
+        if (activePagination) {
+            activePagination.classList.add('active')
+        }
+    }
+
+
+    updateSlidesToShowByViewport() {
+        const width = window.innerWidth
+
+        if (width < 768) {
+            this.slidesToShow = this.slidesToShowMobile
+            this.slidesNextCount = this.slidesNextCountMobile
+        } else {
+            this.slidesToShow = this.options.slidesToShow || 1
+            this.slidesNextCount = this.options.slidesNextCount || 1
+        }
+
+        const total = this.slides.length
+        const maxStartIndex = Math.max(0, total - this.slidesToShow)
+        if (this.currentIndex > maxStartIndex) {
+            this.currentIndex = maxStartIndex
+            this.scrollToItem()
+        }
+
+        this.updateButtons()
+        this.updateProgress()
+        this.updatePaginations()
+    }
 
     goTo(index) {
         const total = this.slides.length
         const maxStartIndex = Math.max(0, total - this.slidesToShow)
 
         if (this.loop) {
-            this.currentIndex = (index + total) % total;
+            this.currentIndex = (index + total) % total
         } else {
             this.currentIndex = Math.max(0, Math.min(index, maxStartIndex))
         }
 
+        this.scrollToItem()
         this.updateButtons()
         this.updateProgress()
+        this.updatePaginations()
     }
 
     next() {
-        this.goTo(this.currentIndex + this.slidesNextCount);
-        this.scrollToItem(this.currentIndex);
+        this.goTo(this.currentIndex + this.slidesNextCount)
     }
 
     prev() {
-        this.goTo(this.currentIndex - this.slidesNextCount);
-        this.scrollToItem(this.currentIndex);
+        this.goTo(this.currentIndex - this.slidesNextCount)
     }
 }
 
