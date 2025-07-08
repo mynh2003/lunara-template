@@ -136,6 +136,23 @@ function LoadRatio() {
     }
 }
 
+function LoadVideo(){
+    const wrapper = document.querySelector('.video-wrapper')
+    const btnPlay = document.querySelector('.play-video')
+    const btnClose = document.querySelector('.close-video')
+    const video= document.querySelector('.video')
+
+    btnPlay.addEventListener('click', () => {
+        wrapper.classList.add('playing')
+        video.play()
+    })
+
+    btnClose.addEventListener('click', () => {
+        wrapper.classList.remove('playing')
+    })
+
+}
+
 document.addEventListener("DOMContentLoaded", () => {
 
     LoadSlider()
@@ -145,5 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
     LoadRatio()
 
     StartCountDown()
+
+    LoadVideo()
 
 });

@@ -122,10 +122,30 @@
         <section class="section collection">
             <div class="section-container">
                 <div class="flex-box">
-                    <div class="flex-item">
-                        <picture>
-                            <img src="./assets/images/banner_video.jpg" alt="">
-                        </picture>
+                    <div class="flex-item video-container">
+                        <div class="video-wrapper">
+                            <button class="play-video">
+                                <img class="play-video__img" src="./assets/images/banner_video.jpg" alt="">
+                                <span class="play-video__icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor">
+                                        <path
+                                            d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z">
+                                        </path>
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="video-layer">
+                                <video class="video" muted preload="auto" loop controls>
+                                    <source
+                                        src="https://cdn.shopify.com/videos/c/o/v/55cd085492dc49a88bc40c6b0f12c599.mp4">
+                                </video>
+                            </div>
+                            <button class="close-video"><svg role="presentation" stroke-width="2" focusable="false"
+                                    width="24" height="24" viewBox="0 0 24 24">
+                                    <path d="M17.658 6.343 6.344 17.657M17.658 17.657 6.344 6.343"
+                                        stroke="currentColor"></path>
+                                </svg></button>
+                        </div>
                     </div>
                     <div class="flex-item item-content">
                         <p class="text-small">SPF & SURF COLLECTION</p>

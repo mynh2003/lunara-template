@@ -65,6 +65,16 @@
         line-height: 22px;
     }
 
+    /* Video */
+    .play-video__icon {
+        width: 55px;
+        height: 55px;
+    }
+
+    .play-video__icon>svg {
+        width: 25px;
+        height: 25px;
+    }
 
     /* Banner */
     .banner-container {
