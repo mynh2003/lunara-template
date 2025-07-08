@@ -63,7 +63,6 @@ function LoadTabs() {
 
 
 function LoadSlider() {
-
     const bestellerSection = document.querySelector('.section.bestellers');
     const bestellerSlider = new Slider(bestellerSection, {
         slidesToShow: 4,
@@ -98,7 +97,7 @@ function LoadRatio() {
     const control = document.querySelector('.ratio-control')
     const before = document.querySelector('.before-container')
     const after = document.querySelector('.after-container')
-
+    UpdateClipPath(50)
 
     let isDragging = false
 
@@ -109,9 +108,7 @@ function LoadRatio() {
 
     document.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
-
         UpdatePostion(e)
-        
     })
 
     document.addEventListener('mouseup', () => {
@@ -129,9 +126,13 @@ function LoadRatio() {
         let newLeft = (currentX / wrapper.offsetWidth) * 100;
         newLeft = Math.max(0, Math.min(newLeft, 100));
 
-        control.style.left = `${newLeft}%`;
-        before.style.clipPath = `inset(0 ${100 - newLeft}% 0 0)`;
-        after.style.clipPath = `inset(0 0 0 ${newLeft}%)`;
+        UpdateClipPath(newLeft)
+    }
+
+    function UpdateClipPath(left){
+        control.style.left = `${left}%`;
+        before.style.clipPath = `inset(0 ${100 - left}% 0 0)`;
+        after.style.clipPath = `inset(0 0 0 ${left}%)`;
     }
 }
 
