@@ -834,7 +834,7 @@ h4.section-title {
         color-mix(in srgb, #56614e 100%, transparent);
 }
 
-.item-product>.product-img>.img-bottom {
+.bestellers .item-product .img-bottom {
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -851,6 +851,15 @@ h4.section-title {
     transition: all 0.25s ease;
     z-index: 5;
     cursor: pointer;
+}
+
+.bestellers .img-bottom__icon{
+    display: none;
+}
+
+.bestellers .img-bottom__icon svg{
+    width: 20px;
+    height: 20px;
 }
 
 .item-product>.product-img>.img-bottom:hover {
