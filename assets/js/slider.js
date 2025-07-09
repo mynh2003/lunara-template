@@ -54,6 +54,7 @@ class Slider {
             this.updateButtons()
             this.updateProgress()
             this.updatePaginations()
+            this.updatePaginationNumber()
         }
     }
 
@@ -127,6 +128,7 @@ class Slider {
         this.updateButtons()
         this.updateProgress()
         this.updatePaginations()
+        this.updatePaginationNumber()
     }
 
     updateZoom() {
@@ -188,10 +190,6 @@ class Slider {
         }
 
         this.scrollToItem(animate)
-        this.updateButtons()
-        this.updateProgress()
-        this.updatePaginations()
-        this.updatePaginationNumber()
     }
 
     next() {
