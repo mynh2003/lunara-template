@@ -692,6 +692,12 @@ h4.section-title {
 }
 
 /* Why Choose */
+.why-choose h3.section-title,
+.before-after h3.section-title,
+.testimonials h3.section-title{
+    text-align: center;
+}
+
 .why-choose .grid-box {
     grid: auto / auto-flow calc((100% /4) - (2vmax *3/4));
     gap: 2vmax;
