@@ -38,6 +38,10 @@ body {
     letter-spacing: 0.6px;
 }
 
+html.no-scroll {
+  overflow: hidden;
+}
+
 a {
     text-decoration: none;
     color: inherit;

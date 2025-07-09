@@ -211,6 +211,7 @@ function LoadZoomImage(mainSlider) {
         const currentIndex = mainSlider.currentIndex
 
         document.body.insertAdjacentHTML('beforeend', galleryHtml)
+        document.documentElement.classList.add('no-scroll')
 
         const gallery = document.querySelector('.gallery-zoom')
         const gallerySlider = new Slider(gallery, {
@@ -237,6 +238,8 @@ function LoadZoomImage(mainSlider) {
             setTimeout(() => {
                 gallery.remove()
             }, 250)
+
+            document.documentElement.classList.remove('no-scroll')
 
         })
     })
