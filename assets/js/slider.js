@@ -6,17 +6,20 @@ class Slider {
         this.container = section.querySelector('.slider')
         this.slideList = this.container.querySelector('.slides')
         this.slides = Array.from(this.slideList.querySelectorAll('.slide'))
+        this.slidesImg = Array.from(this.slideList.querySelectorAll('.slide img'))
         this.prevBtn = this.container.querySelector('.slider-nav-left button')
         this.nextBtn = this.container.querySelector('.slider-nav-right button')
         this.progress = this.container.querySelector('.slider-progress')
         this.paginations = Array.from(this.container.querySelectorAll('.slider-pagination'))
+        this.paginationNumber = this.container.querySelector('.slider-pagination-number')
         this.currentIndex = 0
-        this.options = options;
+        this.options = options
         this.slidesToShow = options.slidesToShow || 1
         this.slidesNextCount = options.slidesNextCount || 1
         this.slidesToShowMobile = options.slidesToShowMobile || 1
         this.slidesNextCountMobile = options.slidesNextCountMobile || 1
         this.loop = options.loop || false
+        this.zoom = options.zoom || false
 
         this.prevBtn?.addEventListener('click', () => this.prev())
         this.nextBtn?.addEventListener('click', () => this.next())
@@ -26,13 +29,15 @@ class Slider {
         this.updateButtons()
         this.updateProgress()
         this.updatePaginations()
-        this.updateSlidesToShowByViewport();
+        this.updatePaginationNumber()
+        this.updateSlidesToShowByViewport()
+        this.updateZoom()
         window.addEventListener('resize', this.updateSlidesToShowByViewport.bind(this))
     }
 
-    scrollToItem() {
+    scrollToItem(instant = true) {
         this.slides[this.currentIndex].scrollIntoView({
-            behavior: "smooth",
+            behavior: instant ? "smooth" : "auto",
             inline: "start",
             block: "nearest",
         })
@@ -74,7 +79,7 @@ class Slider {
     }
 
     bindPaginationEvents() {
-        if (!this.paginations || this.paginations.length === 0) return;
+        if (!this.paginations || this.paginations.length === 0) return
         this.paginations.forEach((pagination, index) => {
             pagination.addEventListener('click', () => {
                 this.paginations.forEach(p => p.classList.toggle('active', p === pagination))
@@ -92,6 +97,12 @@ class Slider {
         if (activePagination) {
             activePagination.classList.add('active')
         }
+    }
+
+    updatePaginationNumber() {
+        if (!this.paginationNumber) return
+
+        this.paginationNumber.textContent = `${this.currentIndex + 1} / ${this.slides.length}`
     }
 
 
@@ -118,7 +129,55 @@ class Slider {
         this.updatePaginations()
     }
 
-    goTo(index) {
+    updateZoom() {
+        if (!this.zoom) return
+
+        this.slidesImg.forEach((img, index) => {
+            let isZoomed = false;
+
+            img.addEventListener('click', (e) => {
+                if (index !== this.currentIndex) return
+
+                if (isZoomed) {
+
+                    isZoomed = false
+                    img.style.removeProperty('cursor')
+                    img.style.removeProperty('object-fit')
+                    img.style.removeProperty('object-position')
+                } else {
+
+                    isZoomed = true
+                    img.style.cursor = 'zoom-out'
+                    img.style.objectFit = 'cover'
+
+                    const rect = img.getBoundingClientRect()
+                    const offsetX = e.clientX - rect.left
+                    const offsetY = e.clientY - rect.top
+                    const percentX = (offsetX / rect.width) * 100
+                    const percentY = (offsetY / rect.height) * 100
+                    img.style.objectPosition = `${percentX}% ${percentY}%`
+                }
+            })
+
+            img.addEventListener('mousemove', (e) => {
+                if (!isZoomed || index !== this.currentIndex) return;
+
+                const rect = img.getBoundingClientRect();
+                const offsetX = e.clientX - rect.left;
+                const offsetY = e.clientY - rect.top;
+                const percentX = (offsetX / rect.width) * 100;
+                const percentY = (offsetY / rect.height) * 100;
+
+                img.style.objectPosition = `${percentX}% ${percentY}%`;
+            });
+        });
+
+
+    }
+
+    goTo(index, options = {}) {
+        const animate = options.animate !== false
+
         const total = this.slides.length
         const maxStartIndex = Math.max(0, total - this.slidesToShow)
 
@@ -128,10 +187,11 @@ class Slider {
             this.currentIndex = Math.max(0, Math.min(index, maxStartIndex))
         }
 
-        this.scrollToItem()
+        this.scrollToItem(animate)
         this.updateButtons()
         this.updateProgress()
         this.updatePaginations()
+        this.updatePaginationNumber()
     }
 
     next() {
