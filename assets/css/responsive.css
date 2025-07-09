@@ -371,8 +371,9 @@
 
     /* Slider */
 
-
-    .bestellers .slides {
+    .why-choose .slides,
+    .bestellers .slides,
+    .customer-benefits .slides {
         min-width: 100%;
         width: auto;
         scroll-padding-inline: 15px;

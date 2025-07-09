@@ -590,6 +590,7 @@ Section
     display: flex;
     align-items: center;
     padding: 2vmax 0;
+    overflow: hidden;
 }
 
 .section-container {
