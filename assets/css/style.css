@@ -12,7 +12,6 @@ root
     --color-white: #ffffff;
     --color-black: #000000;
     --text-color: #1a1b18;
-
 }
 
 /* ==========
@@ -25,14 +24,10 @@ Init
     box-sizing: border-box;
 }
 
-body,
-html {
-    width: 100vw;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
-
 body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
     font-family: "Jost", sans-serif;
     font-size: 1rem;
     letter-spacing: 0.6px;
@@ -54,31 +49,102 @@ button {
     cursor: pointer;
 }
 
-.text-small {
-    font-size: 0.75rem;
-    line-height: 0.75rem;
-    font-weight: 500;
-    color: #606459;
-    letter-spacing: 2px;
+.typo-h1{
+    font-size: 3.75rem;
+    line-height: 4rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #0e0e0d;
+    text-transform: capitalize;
+    font-family: 'Cabin', sans-serif;
 }
 
-.text-medium {
+.typo-h2{
+    font-size: 2.5rem;
+    line-height: 3.25rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-family: 'Cabin', sans-serif;
+}
+
+.typo-h3{
+    font-size: 1.75rem;
+    line-height: 2.375rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-family: 'Cabin', sans-serif;
+}
+
+.typo-h4{
+    font-size: 1.375rem;
+    line-height: 2rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-family: 'Cabin', sans-serif;
+}
+
+.typo-h5{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: var(--text-color);
+    font-family: 'Cabin', sans-serif;
+}
+
+
+.typo-h6{
+    font-size: 1rem;
+    line-height: 1.625rem;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-family: 'Cabin', sans-serif;
+}
+
+.typo-p1{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 400;
+    letter-spacing: 0.6px;
+    color: var(--text-color);
+    font-family: 'Jost', sans-serif;
+}
+
+.typo-p2{
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 400;
-    color: var(--text-color);
     letter-spacing: 0.6px;
+    color: var(--text-color);
+    font-family: 'Jost', sans-serif;
 }
 
-.description {
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    color: var(--text-color);
+.typo-p3{
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #606459;
+    font-family: 'Jost', sans-serif;
+}
+
+.text-span{
+    font-size: 0.875rem;
+    line-height: 1.5rem;
     font-weight: 400;
     letter-spacing: 0.6px;
-    font-style: normal;
-    text-transform: none;
+    color: var(--text-color);
+    font-family: 'Jost', sans-serif;
 }
+
 
 .button {
     display: flex;
@@ -434,12 +500,6 @@ Layout
     display: none;
 }
 
-
-.tab-content__text {
-    font-size: .875rem;
-    line-height: 1.5rem;
-}
-
 /* Flex Box */
 .flex-box {
     width: 100%;
@@ -457,19 +517,17 @@ Layout
 }
 
 .flex-item .item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 32px;
-    height: 32px;
+    height: 31px;
 }
 
-.flex-item .item-title {
+.flex-item .item-icon >svg{
     width: 100%;
-    font-size: 1rem;
-    line-height: 1.625rem;
-    font-weight: 600;
-    color: var(--text-color);
-    font-family: 'Cabin', sans-serif;
+    height: 100%;
 }
-
 
 /* Grid Box */
 .grid-box {
@@ -609,23 +667,6 @@ Section
     gap: 2vmax;
 }
 
-.section-title {
-    width: 100%;
-    font-weight: 600;
-    font-family: 'Cabin', sans-serif;
-    color: var(--text-color);
-}
-
-h3.section-title {
-    font-size: 2.5rem;
-    line-height: 3.25rem;
-}
-
-h4.section-title {
-    font-size: 1.75rem;
-    line-height: 2.375rem;
-}
-
 .section .button {
     background-color: #f7dd64;
     color: var(--color-black);
@@ -634,8 +675,6 @@ h4.section-title {
 .section .button:hover {
     background-color: #f9e792;
 }
-
-
 
 /* Main */
 .main-wrapper {
@@ -665,14 +704,6 @@ h4.section-title {
     background-color: var(--background-color-600);
 }
 
-.banner-content>h1 {
-    font-family: "Cabin", sans-serif;
-    font-size: 3.75rem;
-    line-height: 4rem;
-    color: #0e0e0d;
-    font-weight: 600;
-}
-
 .banner-content>.button {
     margin-top: 1vmax;
 }
@@ -692,9 +723,9 @@ h4.section-title {
 }
 
 /* Why Choose */
-.why-choose h3.section-title,
-.before-after h3.section-title,
-.testimonials h3.section-title{
+.why-choose .typo-h2,
+.before-after .typo-h2,
+.testimonials .typo-h2{
     text-align: center;
 }
 
@@ -746,15 +777,16 @@ h4.section-title {
     align-items: center;
 }
 
-.essentails .flex-item>picture>img {
+.essentails img {
+    aspect-ratio: 4/3;
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: 50% 50%;
 }
 
-.essentails .text-small,
-.collection .text-small {
+.essentails .typo-p3,
+.collection .typo-p3 {
     color: #8e9385;
     font-weight: 600;
 }
@@ -782,6 +814,7 @@ h4.section-title {
     position: relative;
     text-align: left;
     gap: 1vmax;
+    cursor: pointer;
 }
 
 .item-product>.product-img {
@@ -791,7 +824,6 @@ h4.section-title {
     position: relative;
     overflow: hidden;
 }
-
 
 .item-product>.product-img::after {
     width: 100%;
@@ -803,7 +835,6 @@ h4.section-title {
     background-color: color-mix(in srgb, #abb4a2 12%, transparent);
     mix-blend-mode: multiply;
     z-index: 2;
-
 }
 
 .item-product>.product-img>img {
@@ -883,27 +914,14 @@ h4.section-title {
     background-color: #424a3c;
 }
 
-.img-bottom>a {
-    font-size: 0.875rem;
-    line-height: 1.5rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    text-align: center;
-}
-
-.item-product:hover .img-bottom {
+.besteller-list .item-product:hover .img-bottom {
     transform: translateY(0);
     opacity: 1;
 }
 
-.item-product>.product-name {
+.bestellers .product-name{
     font-family: 'Cabin', sans-serif;
-}
-
-.item-product>.product-title>.text-medium {
-    font-family: 'Cabin', sans-serif;
-    font-weight: 600;
-    line-height: 1.625rem;
+    letter-spacing: 1px;
 }
 
 .product-price {
@@ -912,16 +930,7 @@ h4.section-title {
     gap: 12px;
 }
 
-.product-price__ragular {
-    font-family: 'Cabin', sans-serif;
-    font-weight: 600;
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-}
-
-.product-price__babged {
-    font-size: .875rem;
-    line-height: 1.5rem;
+.product-price .text-span{
     color: #bbbeb6;
     text-decoration: line-through;
 }
@@ -938,11 +947,8 @@ h4.section-title {
 }
 
 /* Collection */
-.collection .play-video__img {
-    aspect-ratio: 4/3;
-}
-
-.collection .video {
+.collection .play-video__img,
+.collection .video  {
     aspect-ratio: 4/3;
 }
 
@@ -989,7 +995,6 @@ h4.section-title {
     right: 0;
     bottom: 0;
     overflow: hidden;
-
     z-index: -1;
 }
 
@@ -1008,10 +1013,6 @@ h4.section-title {
     background: color-mix(in srgb, #f3f6ef 100%, transparent);
 }
 
-.countdown .section-title {
-    text-transform: capitalize;
-}
-
 .countdown>.section-container>.flex-box {
     justify-content: center;
     align-items: center;
@@ -1021,7 +1022,6 @@ h4.section-title {
 .countdown>.section-container>.flex-box>.flex-item {
     width: unset;
 }
-
 
 .countdown-container .countdown-item {
     width: 100%;
@@ -1043,24 +1043,17 @@ h4.section-title {
     border: 2px solid var(--color-black);
 }
 
-.countdown .link>span {
-    font-size: .875rem;
-    line-height: 1.5rem;
+.countdown .countdown-number{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.countdown .link .text-span{
     font-weight: 500;
-    letter-spacing: 0.6px;
     text-transform: uppercase;
     color: var(--color-black);
     text-decoration: underline;
-}
-
-span.number,
-.countdown-space {
-    font-size: 1.75rem;
-    line-height: 2.375rem;
-    font-weight: 600;
-    font-family: 'Cabin', sans-serif;
-    color: var(--text-color);
-    letter-spacing: 0.6px;
 }
 
 .countdown-space {
@@ -1172,13 +1165,8 @@ span.number,
     padding: 0 5vmax;
 }
 
-.product-info .text-small {
+.product-info .typo-p3 {
     letter-spacing: 1px;
-}
-
-.product-info .section-title {
-    font-size: 1.75rem;
-    line-height: 2.375rem;
 }
 
 .product-featured .product-feedback {
@@ -1197,45 +1185,23 @@ span.number,
     gap: 12px;
 }
 
-.product-featured .product-price__ragular {
-    font-size: 1.375rem;
-    line-height: 2rem;
-    font-weight: 600;
-    font-family: 'Cabin', sans-serif;
+.product-featured .typo-h4 {
     color: #dc2626;
 }
 
-.product-featured .product-price__babged {
-    font-size: 1rem;
-    line-height: 1.625rem;
-    font-weight: 600;
-    font-family: 'Cabin', sans-serif;
+.product-featured .typo-h6 {
+    text-decoration: line-through;
     color: #606459;
 }
 
-.product-count-review,
-.tax-shipping-policy {
-    font-size: .875rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.6px;
-    color: var(--text-color);
-}
-
-.tax-shipping-policy a {
+.product-featured .text-span a {
     color: #606459;
     text-decoration: underline;
 }
 
-.product-metafield {
-    width: 100%;
-    font-size: 1rem;
-    line-height: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 0.6px;
-    text-align: left;
+.product-featured .tab-item.active .tab-title{
+    padding-bottom: 0.5vmax;
 }
-
 
 .product-buttons {
     width: 100%;
@@ -1289,11 +1255,6 @@ span.number,
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Jost', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5rem;
-    letter-spacing: 0.6px;
 }
 
 .product-inventory {
@@ -1303,8 +1264,6 @@ span.number,
 }
 
 .inventory-label {
-    font-size: .875rem;
-    line-height: 1.5rem;
     font-weight: 500;
     text-transform: uppercase;
     color: #3c9342;
@@ -1447,7 +1406,6 @@ span.number,
     position: relative;
 }
 
-
 .ratio-btn::before {
     content: "";
     position: absolute;
@@ -1554,17 +1512,8 @@ span.number,
     height: 16px;
 }
 
-.testimonial-text {
-    width: 100%;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
-    font-weight: 400;
-}
 
-.testimonial-customer {
-    width: 100%;
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+.testimonials .typo-p1:last-child {
     font-weight: 500;
     font-style: italic;
 }
@@ -1677,8 +1626,7 @@ span.number,
     transition: all .2s ease-out, opacity .5s ease-in-out;
 }
 
-.questions-tab .tab-content__text {
-    text-align: left;
+.questions-tab .typo-p2{
     padding-bottom: 2vmax;
 }
 
@@ -1699,7 +1647,7 @@ span.number,
 }
 
 /* Express */
-.express .text-medium {
+.express .typo-p2 {
     font-weight: 500;
     letter-spacing: 2px;
     color: #606459;
@@ -1722,6 +1670,10 @@ span.number,
 .subscibe {
     background: color-mix(in srgb, #f3f6ef 100%, transparent);
     padding: 3vmax 0;
+}
+
+.subscibe .typo-h2{
+    text-transform: none;
 }
 
 .subscibe .flex-box {
@@ -1773,24 +1725,14 @@ span.number,
 .subscibe .field input[type="email"] {
     width: 100%;
     border: none;
-    font-family: 'Jost', sans-serif;
-    color: var(--text-color);
-    font-size: 1rem;
-    line-height: 1.5rem;
     padding: 12px 15px;
-    letter-spacing: 0.6px;
     background-color: transparent;
     outline: none;
 }
 
 .subscibe .field input[type="submit"] {
     border: none;
-    color: var(--text-color);
-    font-family: 'Jost', sans-serif;
-    font-size: .875rem;
-    line-height: 1.5rem;
     font-weight: 500;
-    letter-spacing: 0.6px;
     text-transform: uppercase;
     padding: 12px 15px;
     background-color: #56614e;
