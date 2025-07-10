@@ -173,6 +173,23 @@
         font-size: 1.125rem;
     }
 
+    .bestellers .item-product .img-bottom {
+        left: unset;
+        padding: 10px;
+        opacity: 1;
+        transform: none;
+    }
+
+    .bestellers .img-bottom__text {
+        display: none;
+    }
+
+    .bestellers .img-bottom__icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     /* Count Downt */
     .countdown>.section-container>.flex-box {
         flex-direction: column;
