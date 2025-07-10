@@ -12,7 +12,9 @@ class Slider {
         this.progress = this.container.querySelector('.slider-progress')
         this.paginations = Array.from(this.container.querySelectorAll('.slider-pagination'))
         this.paginationNumber = this.container.querySelector('.slider-pagination-number')
+
         this.currentIndex = 0
+
         this.options = options
         this.slidesToShow = options.slidesToShow || 1
         this.slidesNextCount = options.slidesNextCount || 1
@@ -20,6 +22,7 @@ class Slider {
         this.slidesNextCountMobile = options.slidesNextCountMobile || 1
         this.loop = options.loop || false
         this.zoom = options.zoom || false
+
 
         this.prevBtn?.addEventListener('click', () => this.prev())
         this.nextBtn?.addEventListener('click', () => this.next())
@@ -32,14 +35,21 @@ class Slider {
         this.updatePaginationNumber()
         this.updateSlidesToShowByViewport()
         this.updateZoom()
+        this.enableDrag()
         window.addEventListener('resize', this.updateSlidesToShowByViewport.bind(this))
     }
 
     scrollToItem(instant = true) {
-        this.slides[this.currentIndex].scrollIntoView({
-            behavior: instant ? "smooth" : "auto",
-            inline: "start",
-            block: "nearest",
+        // this.slides[this.currentIndex].scrollIntoView({
+        //     behavior: instant ? "smooth" : "auto",
+        //     inline: "start",
+        //     block: "nearest",
+        // })
+        const target = this.slides[this.currentIndex]
+        const offsetLeft = target.offsetLeft
+        this.slideList.scrollTo({
+            left: offsetLeft,
+            behavior: instant ? "smooth" : "auto"
         })
     }
 
@@ -57,6 +67,48 @@ class Slider {
             this.updatePaginationNumber()
         }
     }
+
+    enableDrag() {
+        let startX = 0
+        let scrollLeft = 0
+        let isDragging = false
+
+        this.slideList.addEventListener('mousedown', (e) => {
+            isDragging = true
+            startX = e.pageX - this.slideList.offsetLeft
+            scrollLeft = this.slideList.scrollLeft
+            this.container.classList.add('dragging')
+        })
+
+        this.slideList.addEventListener('mousemove', (e) => {
+            if (!isDragging) return
+            e.preventDefault()
+            const x = e.pageX - this.slideList.offsetLeft
+            const walk = (x - startX)
+            this.slideList.scrollLeft = scrollLeft - walk
+        })
+
+        const stopDrag = (e) => {
+            if (!isDragging) return
+            isDragging = false
+            this.container.classList.remove('dragging')
+
+            const x = e.pageX - this.slideList.offsetLeft
+            const moved = x - startX
+            const slideWidth = this.slides[0].offsetWidth
+            const threshold = slideWidth * 0.02  
+            
+            if (moved < -threshold) {
+               this.next()
+            } else if (moved > threshold) {
+                this.prev()
+            } 
+        }
+
+        this.slideList.addEventListener('mouseup', stopDrag)
+        this.slideList.addEventListener('mouseleave', stopDrag)
+    }
+
 
     updateButtons() {
         if (!this.loop) {
@@ -173,8 +225,6 @@ class Slider {
                 img.style.objectPosition = `${percentX}% ${percentY}%`;
             });
         });
-
-
     }
 
     goTo(index, options = {}) {

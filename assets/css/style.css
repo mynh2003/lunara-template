@@ -34,7 +34,7 @@ body {
 }
 
 html.no-scroll {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 a {
@@ -49,7 +49,7 @@ button {
     cursor: pointer;
 }
 
-.typo-h1{
+.typo-h1 {
     font-size: 3.75rem;
     line-height: 4rem;
     font-weight: 600;
@@ -59,7 +59,7 @@ button {
     font-family: 'Cabin', sans-serif;
 }
 
-.typo-h2{
+.typo-h2 {
     font-size: 2.5rem;
     line-height: 3.25rem;
     font-weight: 600;
@@ -69,7 +69,7 @@ button {
     font-family: 'Cabin', sans-serif;
 }
 
-.typo-h3{
+.typo-h3 {
     font-size: 1.75rem;
     line-height: 2.375rem;
     font-weight: 600;
@@ -79,7 +79,7 @@ button {
     font-family: 'Cabin', sans-serif;
 }
 
-.typo-h4{
+.typo-h4 {
     font-size: 1.375rem;
     line-height: 2rem;
     font-weight: 600;
@@ -89,7 +89,7 @@ button {
     font-family: 'Cabin', sans-serif;
 }
 
-.typo-h5{
+.typo-h5 {
     font-size: 1.25rem;
     line-height: 1.75rem;
     font-weight: 600;
@@ -99,7 +99,7 @@ button {
 }
 
 
-.typo-h6{
+.typo-h6 {
     font-size: 1rem;
     line-height: 1.625rem;
     font-weight: 600;
@@ -109,7 +109,7 @@ button {
     font-family: 'Cabin', sans-serif;
 }
 
-.typo-p1{
+.typo-p1 {
     font-size: 1.125rem;
     line-height: 1.75rem;
     font-weight: 400;
@@ -118,7 +118,7 @@ button {
     font-family: 'Jost', sans-serif;
 }
 
-.typo-p2{
+.typo-p2 {
     font-size: 1rem;
     line-height: 1.5rem;
     font-weight: 400;
@@ -127,7 +127,7 @@ button {
     font-family: 'Jost', sans-serif;
 }
 
-.typo-p3{
+.typo-p3 {
     font-size: 0.75rem;
     line-height: 0.75rem;
     font-weight: 500;
@@ -136,7 +136,7 @@ button {
     font-family: 'Jost', sans-serif;
 }
 
-.text-span{
+.text-span {
     font-size: 0.875rem;
     line-height: 1.5rem;
     font-weight: 400;
@@ -181,14 +181,28 @@ Layout
 }
 
 .slides {
+    user-select: none;
     overflow: auto hidden;
     scrollbar-width: none;
     scroll-snap-type: x mandatory;
     overscroll-behavior-x: contain;
 }
 
+.slider.dragging .slides{
+    scroll-snap-type: none;
+    overscroll-behavior-x: none;
+}
+
 .slides>* {
     scroll-snap-align: start;
+}
+
+.slider img {
+    user-drag: none;
+    -webkit-user-drag: none;
+    -moz-user-drag: none;
+    -ms-user-drag: none;
+    user-select: none;
 }
 
 .slider-controller {
@@ -312,8 +326,8 @@ Layout
     transition: all .25s ease-in-out;
 }
 
-.gallery-zoom-container.open{
-     opacity: 1;
+.gallery-zoom-container.open {
+    opacity: 1;
 }
 
 .gallery-zoom-wrapper {
@@ -323,7 +337,7 @@ Layout
     transition: all ease-in-out .25s;
 }
 
-.gallery-zoom-container.open .gallery-zoom-wrapper{
+.gallery-zoom-container.open .gallery-zoom-wrapper {
     opacity: 1;
     transform: scale(1);
 }
@@ -396,7 +410,7 @@ Layout
     transition: all ease .25s;
 }
 
-.gallery-zoom-container .slider-nav-left:hover svg{
+.gallery-zoom-container .slider-nav-left:hover svg {
     transform: translate(-3px) rotate(180deg)
 }
 
@@ -415,7 +429,7 @@ Layout
     letter-spacing: 0;
 }
 
-.gallery-zoom-close{
+.gallery-zoom-close {
     width: 50px;
     height: 50px;
     position: absolute;
@@ -433,7 +447,7 @@ Layout
     transition: all ease .25s
 }
 
-.gallery-zoom-close:hover{
+.gallery-zoom-close:hover {
     transform: rotate(90deg);
 }
 
@@ -524,7 +538,7 @@ Layout
     height: 31px;
 }
 
-.flex-item .item-icon >svg{
+.flex-item .item-icon>svg {
     width: 100%;
     height: 100%;
 }
@@ -725,7 +739,7 @@ Section
 /* Why Choose */
 .why-choose .typo-h2,
 .before-after .typo-h2,
-.testimonials .typo-h2{
+.testimonials .typo-h2 {
     text-align: center;
 }
 
@@ -894,11 +908,11 @@ Section
     cursor: pointer;
 }
 
-.bestellers .img-bottom__icon{
+.bestellers .img-bottom__icon {
     display: none;
 }
 
-.bestellers .img-bottom__icon svg{
+.bestellers .img-bottom__icon svg {
     width: 20px;
     height: 20px;
 }
@@ -919,7 +933,7 @@ Section
     opacity: 1;
 }
 
-.bestellers .product-name{
+.bestellers .product-name {
     font-family: 'Cabin', sans-serif;
     letter-spacing: 1px;
 }
@@ -930,7 +944,7 @@ Section
     gap: 12px;
 }
 
-.product-price .text-span{
+.product-price .text-span {
     color: #bbbeb6;
     text-decoration: line-through;
 }
@@ -948,7 +962,7 @@ Section
 
 /* Collection */
 .collection .play-video__img,
-.collection .video  {
+.collection .video {
     aspect-ratio: 4/3;
 }
 
@@ -1043,13 +1057,13 @@ Section
     border: 2px solid var(--color-black);
 }
 
-.countdown .countdown-number{
+.countdown .countdown-number {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.countdown .link .text-span{
+.countdown .link .text-span {
     font-weight: 500;
     text-transform: uppercase;
     color: var(--color-black);
@@ -1199,7 +1213,7 @@ Section
     text-decoration: underline;
 }
 
-.product-featured .tab-item.active .tab-title{
+.product-featured .tab-item.active .tab-title {
     padding-bottom: 0.5vmax;
 }
 
@@ -1626,7 +1640,7 @@ Section
     transition: all .2s ease-out, opacity .5s ease-in-out;
 }
 
-.questions-tab .typo-p2{
+.questions-tab .typo-p2 {
     padding-bottom: 2vmax;
 }
 
@@ -1672,7 +1686,7 @@ Section
     padding: 3vmax 0;
 }
 
-.subscibe .typo-h2{
+.subscibe .typo-h2 {
     text-transform: none;
 }
 
