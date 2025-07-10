@@ -40,7 +40,7 @@ function StartCountDown() {
 
     function updateDigits(container, value) {
         const valueStr = String(value).padStart(2, '0')
-        const digits = container.querySelectorAll('.number')
+        const digits = container.querySelectorAll('.typo-h3')
         if (digits.length === 2) {
             digits[0].textContent = valueStr[0]
             digits[1].textContent = valueStr[1]

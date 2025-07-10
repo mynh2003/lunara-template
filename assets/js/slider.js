@@ -40,11 +40,6 @@ class Slider {
     }
 
     scrollToItem(instant = true) {
-        // this.slides[this.currentIndex].scrollIntoView({
-        //     behavior: instant ? "smooth" : "auto",
-        //     inline: "start",
-        //     block: "nearest",
-        // })
         const target = this.slides[this.currentIndex]
         const offsetLeft = target.offsetLeft
         this.slideList.scrollTo({
@@ -97,7 +92,7 @@ class Slider {
             const moved = x - startX
             const slideWidth = this.slides[0].offsetWidth
             const threshold = slideWidth * 0.02  
-            
+
             if (moved < -threshold) {
                this.next()
             } else if (moved > threshold) {
